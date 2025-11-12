@@ -1,0 +1,70 @@
+/* quick_insert.css */
+
+#quickInsert {
+  max-width: 750px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 5px #ccc;
+  border-radius: 8px;
+  background-color: #f9faffc8;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(108, 5, 103, 0.2);
+}
+
+#quickInsert h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+#quickInsert label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+#quickInsert select,
+#quickInsert input[type="text"],
+#quickInsert input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+#quickInsert select:focus,
+#quickInsert input[type="text"]:focus,
+#quickInsert input[type="number"]:focus {
+  outline: none;
+  border-color: #007BFF;
+  background-color: #e9f0ff;
+}
+
+#quickInsert button {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #14a333e2;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#quickInsert button:hover {
+  background-color: #851551;
+}
+
+@media (max-width: 480px) {
+  #quickInsert {
+    margin: 10px;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,48 @@
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Add white background for readability over image */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table, th, td {
+  border: 1px solid #080202;
+}
+
+th {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  color:#f4f4f4;
+}
+
+/* Button */
+button {
+  padding: 5px 10px;
+  margin: 0 2px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/*Search button*/
+button:last-child {
+  background-color: #dc3545; /* Red for delete */
+}
+
+h2{
+    color: white;
+}

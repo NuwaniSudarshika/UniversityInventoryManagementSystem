@@ -1,0 +1,75 @@
+/* login.css */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('login2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    
+}
+
+.main-header {
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 40px;
+    margin-left: 0;       /* Ensure no left margin */
+    padding-left: 0;      /* Ensure no left padding */
+}
+
+
+.login-box {
+    background: white;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    width: 300px;
+    
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+select,
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4b003a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #360028;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #b1a3a3;
+}

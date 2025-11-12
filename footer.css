@@ -1,0 +1,14 @@
+
+.footer {
+  position: fixed;      /* Fix to viewport */
+  bottom: 0;            /* Stick to bottom */
+  left: 0;              /* Align left */
+  width: 100%;          /* Full width */
+  background-color: #4b003a;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  z-index: 1000;        /* Stay on top */
+  margin: 0;            /* Remove margin */
+}

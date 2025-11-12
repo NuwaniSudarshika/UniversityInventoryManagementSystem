@@ -1,0 +1,238 @@
+
+Setting environment for using XAMPP for Windows.
+DELL@SAMINDA-PC c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE inventory_db;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> USE inventory_db;
+Database changed
+MariaDB [inventory_db]> CREATE TABLE items (
+    ->   item_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->   item_name VARCHAR(100) NOT NULL,
+    ->   item_count INT NOT NULL
+    -> );
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    17
+Current database: inventory_db
+
+Query OK, 0 rows affected (0.077 sec)
+
+MariaDB [inventory_db]> show tables;
++------------------------+
+| Tables_in_inventory_db |
++------------------------+
+| items                  |
++------------------------+
+1 row in set (0.017 sec)
+
+MariaDB [inventory_db]> INSERT INTO items (item_name, item_count) VALUES
+    -> ('Projector', 5),
+    -> ('Microscope', 10),
+    -> ('Lab Coat', 25);
+Query OK, 3 rows affected (0.105 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_db]> drop table items;
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [inventory_db]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [inventory_db]> CREATE TABLE applied_items (
+    ->   item_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->   item_name VARCHAR(100) NOT NULL,
+    ->   item_count INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.026 sec)
+
+MariaDB [inventory_db]> CREATE TABLE business_items (
+    ->   item_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->   item_name VARCHAR(100) NOT NULL,
+    ->   item_count INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [inventory_db]> CREATE TABLE technology_items (
+    ->   item_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->   item_name VARCHAR(100) NOT NULL,
+    ->   item_count INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [inventory_db]> INSERT INTO applied_items (item_name, item_count)
+    -> VALUES
+    ->   ('Projector', 5),
+    ->   ('Microscope', 3);
+Query OK, 2 rows affected (0.015 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_db]> INSERT INTO business_items (item_name, item_count)
+    -> VALUES
+    ->   ('Laptop', 10),
+    ->   ('Printer', 2);
+Query OK, 2 rows affected (0.015 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_db]> INSERT INTO technology_items (item_name, item_count)
+    -> VALUES
+    ->   ('Arduino Kit', 7),
+    ->   ('3D Printer', 1);
+Query OK, 2 rows affected (0.015 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_db]> CREATE TABLE returned_items (
+    ->     return_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     faculty VARCHAR(50) NOT NULL,
+    ->     item_name VARCHAR(100) NOT NULL,
+    ->     item_count INT NOT NULL,
+    ->     taken_date DATETIME NOT NULL,
+    ->     return_date DATETIME DEFAULT NULL
+    -> );
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    344
+Current database: inventory_db
+
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [inventory_db]> show tables;
++------------------------+
+| Tables_in_inventory_db |
++------------------------+
+| applied_items          |
+| business_items         |
+| returned_items         |
+| technology_items       |
++------------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
+Empty set (0.001 sec)
+
+MariaDB [inventory_db]> drop table returned_items;
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [inventory_db]> CREATE TABLE returned_items (
+    ->     return_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     faculty VARCHAR(50) NOT NULL,
+    ->     item_name VARCHAR(100) NOT NULL,
+    ->     item_count INT NOT NULL,
+    ->     taken_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     return_date DATETIME DEFAULT NULL
+    -> );
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
+Empty set (0.000 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
+Empty set (0.000 sec)
+
+MariaDB [inventory_db]> select*from applied_items;
++---------+-----------+------------+
+| item_id | item_name | item_count |
++---------+-----------+------------+
+|       1 | Projector |          7 |
++---------+-----------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [inventory_db]> CREATE TABLE issued_items (
+    ->     issue_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     faculty VARCHAR(50) NOT NULL,
+    ->     item_name VARCHAR(100) NOT NULL,
+    ->     item_count INT NOT NULL,
+    ->     issue_date DATETIME DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [inventory_db]> select*from issued_items;
++----------+----------------------------+-----------+------------+---------------------+
+| issue_id | faculty                    | item_name | item_count | issue_date          |
++----------+----------------------------+-----------+------------+---------------------+
+|        1 | Faculty of Applied Science | Projector |          1 | 2025-06-17 13:25:58 |
++----------+----------------------------+-----------+------------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
+Empty set (0.000 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
+Empty set (0.000 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
++-----------+----------+-----------+------------+---------------------+-------------+
+| return_id | faculty  | item_name | item_count | taken_date          | return_date |
++-----------+----------+-----------+------------+---------------------+-------------+
+|         1 | Business | Laptop    |          2 | 2025-06-17 13:37:16 | NULL        |
++-----------+----------+-----------+------------+---------------------+-------------+
+1 row in set (0.000 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
++-----------+----------+-----------+------------+---------------------+---------------------+
+| return_id | faculty  | item_name | item_count | taken_date          | return_date         |
++-----------+----------+-----------+------------+---------------------+---------------------+
+|         1 | Business | Laptop    |          2 | 2025-06-17 13:37:16 | 2025-06-17 13:39:01 |
++-----------+----------+-----------+------------+---------------------+---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [inventory_db]> select*from applied_items;
++---------+-----------+------------+
+| item_id | item_name | item_count |
++---------+-----------+------------+
+|       1 | Projector |          7 |
+|       3 | chair     |         10 |
++---------+-----------+------------+
+2 rows in set (0.001 sec)
+
+MariaDB [inventory_db]> select*from business_items;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    243
+Current database: inventory_db
+
++---------+-----------+------------+
+| item_id | item_name | item_count |
++---------+-----------+------------+
+|       1 | Laptop    |         15 |
+|       2 | Printer   |          1 |
++---------+-----------+------------+
+2 rows in set (0.005 sec)
+
+MariaDB [inventory_db]> select*from business_items;
++---------+-----------+------------+
+| item_id | item_name | item_count |
++---------+-----------+------------+
+|       1 | Laptop    |         15 |
+|       2 | Printer   |          1 |
++---------+-----------+------------+
+2 rows in set (0.001 sec)
+
+MariaDB [inventory_db]> select*from applied_items;
++---------+-----------+------------+
+| item_id | item_name | item_count |
++---------+-----------+------------+
+|       1 | Projector |          5 |
+|       3 | chair     |         12 |
+|       4 | table     |         30 |
++---------+-----------+------------+
+3 rows in set (0.001 sec)
+
+MariaDB [inventory_db]> select*from returned_items;
++-----------+----------+-----------+------------+---------------------+---------------------+
+| return_id | faculty  | item_name | item_count | taken_date          | return_date         |
++-----------+----------+-----------+------------+---------------------+---------------------+
+|         1 | Business | Laptop    |          2 | 2025-06-17 13:37:16 | 2025-06-17 13:39:01 |
+|         2 | Business | Printer   |          1 | 2025-06-17 16:59:18 | NULL                |
++-----------+----------+-----------+------------+---------------------+---------------------+
+2 rows in set (0.001 sec)
